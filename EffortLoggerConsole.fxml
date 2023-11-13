@@ -25,5 +25,6 @@
       <ComboBox fx:id="categoryDetailComboBox" layoutX="260.0" layoutY="200.0" prefHeight="26.0" prefWidth="241.0" />
       <Label layoutX="95.0" layoutY="182.0" text="Effort Category:" />
       <Button fx:id="backButton" layoutX="26.0" layoutY="23.0" mnemonicParsing="false" onAction="#handleBackButtonAction" text="Back" />
+      <Button fx:id="readLogsButton" layoutX="405.0" layoutY="333.0" mnemonicParsing="false" onAction="#handleReadLogs" text="Read Logs" />
    </children>
 </AnchorPane>

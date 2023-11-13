@@ -20,6 +20,7 @@ public class EffortConsoleController {
 	public Button startButton;
 	public Button stopButton;
 	public Button backButton;
+	public Button readLogsButton;
 	public Label clockLabel;
 	public TextField stringField;
 	boolean isClockRunning;
@@ -116,6 +117,19 @@ public class EffortConsoleController {
 			e.printStackTrace();
 		}
 		
+		
+	}
+	
+	public void handleReadLogs() {
+		String[] effortLogs = DataUtil.loadData();
+		
+		for(int i = 0; i < effortLogs.length; i++) {
+			effortLogs[i] = EncryptionUtil.decrypt(key, effortLogs[i]);
+		}
+		
+		for(int i = 0; i < effortLogs.length; i++) {
+			 System.out.println(effortLogs[i]);
+		}
 		
 	}
 	

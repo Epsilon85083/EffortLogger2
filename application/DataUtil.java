@@ -9,7 +9,9 @@ import java.nio.file.Paths;
 import java.io.*;
 import java.nio.file.*;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class DataUtil {
 
@@ -26,13 +28,25 @@ public class DataUtil {
         }
     }
 
-    public static String loadData() {
-        try {
-            return new String(Files.readAllBytes(Paths.get(FILE_PATH)));
+    public static String[] loadData() {
+//        try {
+//            return new String(Files.readAllBytes(Paths.get(FILE_PATH)));
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//            return null;
+//        }
+    	
+    	List<String> lines = new ArrayList<>();
+        try (BufferedReader reader = Files.newBufferedReader(Paths.get(FILE_PATH))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                lines.add(line);
+            }
         } catch (IOException e) {
             e.printStackTrace();
             return null;
         }
+        return lines.toArray(new String[0]);
     }
     
     public static void createBackup(String originalFilePath) throws IOException {

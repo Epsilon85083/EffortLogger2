@@ -67,7 +67,7 @@ public class EffortLog {
 	
 	//creates log
 	public String createLog() {
-		return timeLog + ";" + lifeCycleStep + ";" + effortCategory + ";" + plan;
+		return timeLog + ";" + lifeCycleStep + ";" + effortCategory + ";" + plan + ".";
 	}
 
 }

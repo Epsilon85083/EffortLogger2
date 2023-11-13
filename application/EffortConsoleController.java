@@ -6,6 +6,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
@@ -25,7 +26,7 @@ public class EffortConsoleController {
 	public TextField stringField;
 	boolean isClockRunning;
 	private Stage stage;
-	
+	public TextArea logTextArea;
 	private String key = "reggol456troffe6";
 	
 	//ComboBoxes
@@ -40,6 +41,7 @@ public class EffortConsoleController {
     private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
 	private Scene mainScene;
     
+	//constructor that stores reference to mainline scene
     public EffortConsoleController(Stage stage, Scene mainScene ) {
         this.stage = stage;
         this.mainScene = mainScene;
@@ -72,7 +74,7 @@ public class EffortConsoleController {
 		categoryDetailComboBox.getSelectionModel().select("Project Plan");
 	}
 	
-	//Handles start time button
+	//Handles start activity button that starts timer
 	public void handleStartButtonClick() {
 		if(!isClockRunning) {
 			clockLabel.setText("Clock Started");
@@ -82,7 +84,7 @@ public class EffortConsoleController {
 		}
 	}
 	
-	//handles stop time button
+	//handles stop time button that called log handler
 	public void handleStopButtonClick() {
 		if(isClockRunning) {
 			clockLabel.setText("Clock Stopped");
@@ -110,6 +112,7 @@ public class EffortConsoleController {
 
 		//saves in file
 		try {
+			//encrypts log before storing
 			DataUtil.saveData(EncryptionUtil.encrypt(key, log));
 			DataUtil.createBackup("effortLoggerData.txt");
 		} catch (Exception e) {
@@ -120,16 +123,25 @@ public class EffortConsoleController {
 		
 	}
 	
+	//reads encrypted logs and decrypts them so that they are viewable
 	public void handleReadLogs() {
 		String[] effortLogs = DataUtil.loadData();
 		
+		//decrypts each effort log from file
 		for(int i = 0; i < effortLogs.length; i++) {
 			effortLogs[i] = EncryptionUtil.decrypt(key, effortLogs[i]);
 		}
 		
-		for(int i = 0; i < effortLogs.length; i++) {
-			 System.out.println(effortLogs[i]);
-		}
+//		for(int i = 0; i < effortLogs.length; i++) {
+//			 System.out.println(effortLogs[i]);
+//		}
+		
+		//loades them onto TextArea so they are viewable
+		StringBuilder sb = new StringBuilder();
+        for (String entry : effortLogs) {
+            sb.append(entry).append("\n");
+        }
+        logTextArea.setText(sb.toString());
 		
 	}
 	

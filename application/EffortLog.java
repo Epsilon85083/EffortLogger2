@@ -1,3 +1,4 @@
+//Author: Joseph Felix
 package application;
 
 public class EffortLog {

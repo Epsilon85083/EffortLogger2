@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.Button?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="login.SignUpController">
+	<!-- TODO Add Nodes -->
+	<children>
+      <Label fx:id="userNameLabel" layoutX="131.0" layoutY="134.0" text="Username" />
+      <TextField fx:id="usernameField" layoutX="213.0" layoutY="127.0" />
+      <Label fx:id="usernameRules" layoutX="131.0" layoutY="160.0" text="Must have between 3 and 32 characters. Containing upper case and lower case letters, numbers, '.', '-', and '_'" />
+      <Label fx:id="passwordLabel1" layoutX="133.0" layoutY="192.0" text="Password" />
+      <PasswordField fx:id="passwordField1" layoutX="215.0" layoutY="189.0" />
+      <Label fx:id="passRules1" layoutX="133.0" layoutY="212.0" text="Must have between 3 and 32 characters. Containing upper case and lower case letters, numbers, '.', '-', and '_'" />
+      <Label fx:id="passwordLabel2" layoutX="103.0" layoutY="242.0" text="Confirm Password" />
+      <PasswordField fx:id="passwordField2" layoutX="215.0" layoutY="239.0" />
+      <Label fx:id="passRules2" layoutX="133.0" layoutY="265.0" text="Must match first password" />
+      <Button fx:id="submit" layoutX="358.0" layoutY="308.0" mnemonicParsing="false" text="Submit" onAction="#submitLogin"/>
+      <Label fx:id="incorrectPassword" layoutX="180.0" layoutY="285.0" style="-fx-text-fill: red"/>
+   </children>
+</AnchorPane>
+

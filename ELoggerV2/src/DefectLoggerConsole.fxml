@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label layoutX="179.0" layoutY="36.0" text="Defect Logger Console">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="projectComboBox" layoutX="90.0" layoutY="124.0" prefHeight="26.0" prefWidth="209.0" promptText="Select Project" stylesheets="@application/application.css" />
+      <Label layoutX="91.0" layoutY="105.0" text="Project:" />
+      <Button fx:id="createLogButton" layoutX="237.0" layoutY="323.0" mnemonicParsing="false" onAction="#handleDefectLog" stylesheets="@application/application.css" text="Create Defect Log">
+         <font>
+            <Font name="Verdana" size="12.0" />
+         </font></Button>
+      <Button fx:id="backButton" layoutX="91.0" layoutY="322.0" mnemonicParsing="false" onAction="#handleBackButtonAction" stylesheets="@application/application.css" text="Back" />
+      <Button fx:id="readLogsButton" layoutX="429.0" layoutY="323.0" mnemonicParsing="false" onAction="#handleReadLogs" stylesheets="@application/application.css" text="Read Logs">
+         <font>
+            <Font name="Verdana" size="12.0" />
+         </font>
+      </Button>
+      <TextArea fx:id="defectDescriptionTextArea" layoutX="89.0" layoutY="180.0" prefHeight="35.0" prefWidth="419.0" />
+      <Label layoutX="337.0" layoutY="105.0" text="Defect Name:" />
+      <TextField fx:id="defectNameTextField" layoutX="337.0" layoutY="124.0" prefHeight="26.0" prefWidth="166.0" promptText="Enter Defect Name" />
+      <Label layoutX="90.0" layoutY="162.0" text="Defect Description:" />
+      <TextArea fx:id="logTextArea" editable="false" layoutX="89.0" layoutY="243.0" prefHeight="64.0" prefWidth="419.0" />
+      <Label layoutX="90.0" layoutY="225.0" text="Logs:" />
+   </children>
+</AnchorPane>

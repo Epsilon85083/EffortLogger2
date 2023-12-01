@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1">
+	<Label fx:id="welcome" layoutX="131.0" layoutY="134.0" text="Welcome" />
+	<Label fx:id="userNameLabel" layoutX="131.0" layoutY="134.0" text="Username" />
+</AnchorPane>
+

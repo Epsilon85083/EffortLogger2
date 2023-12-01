@@ -56,9 +56,9 @@ public class LoginViewController {
 			return;
 		}
 		
-		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/EffortLoggerConsole.fxml"));
-		Path filePath = Path.of("src/main/java/login/unimportant.txt"); //Potentially a problem
-		String filePathString = "src/main/java/login/unimportant.txt"; //Potentially a problem
+		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/EffortLoggerConsole.fxml")); // This is where David's work merges into Adam's work and bugs could be coming from the application package
+		Path filePath = Path.of("src/main/java/login/unimportant.txt");
+		String filePathString = "src/main/java/login/unimportant.txt"; 
 		FileReader fileReader = new FileReader(filePathString);
 		
 		List<String> allSavedLogins = Files.readAllLines(filePath);

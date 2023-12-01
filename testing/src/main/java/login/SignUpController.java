@@ -9,6 +9,10 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
 import java.util.regex.Pattern;
@@ -33,7 +37,7 @@ public class SignUpController {
 	public void submitLogin(ActionEvent event) 
 		throws IOException, NoSuchAlgorithmException, InvalidKeySpecException
 	{
-		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("DisplayPage.fxml"));
+		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/EffortLoggerConsole.fxml")); // This is where David's work merges into Adam's work and bugs could be coming from the application package
 		//if the passwords are the same, username meets requirements, and password meets requirements EffortLogger will store their credentials
 		if(checkPasswordSimilarity(passwordField1, passwordField2) && secure.checkRequirements(usernameField) && secure.checkRequirements(passwordField1)) {
 			login.setName(usernameField.getText());
@@ -43,9 +47,7 @@ public class SignUpController {
 		scene = new Scene(fxmlLoader.load(), 900, 600);
 		stage.setTitle("Login Info");
 		
-		DisplayViewController control = fxmlLoader.getController();
-		control.setLogin(login);
-		control.writeToFile(login);
+		writeToFile(login);
 		stage.setScene(scene);
 		stage.show();
 		}
@@ -63,4 +65,21 @@ public class SignUpController {
 		else
 			return false;
 	}
+	
+	//Writes the username and encrypted password from the textfields into a separate text file
+	public void writeToFile(Login login) 
+		throws NoSuchAlgorithmException, InvalidKeySpecException 
+	{
+		//FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("PlanningPoker.fxml"));
+		String content = login.getName() + "|" + secure.generateStrongPasswordHash(login.getPassword()) + "\n"; 
+		Path filePath = Paths.get("src\\main\\java\\login\\unimportant.txt");
+		System.out.println(filePath.toString());
+			
+		try { // Write to "unimportant.txt" otherwise throw an error
+		      Files.writeString(filePath, content, StandardOpenOption.CREATE, StandardOpenOption.APPEND);
+		} catch (IOException e) {
+		      System.out.println("An error occurred.");
+		      e.printStackTrace();
+		    }
+		}
 }
